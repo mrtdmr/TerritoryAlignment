@@ -21,7 +21,7 @@ namespace Application.Plans
             public ICollection<Market> Markets { get; set; }
             public ICollection<City> Cities { get; set; }
             public ICollection<Department> Departments { get; set; }
-            public ICollection<Segment> Segments { get; set; }
+            public Deduction Deduction { get; set; }
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -63,10 +63,6 @@ namespace Application.Plans
                 {
                     var physicianUniverse = (from dc in _context.DepartmentCities.ToArray() join c in request.Cities on dc.CityId equals c.Id where dc.DepartmentId == department.Id select dc).Sum(dc => dc.PhysicianCount);
                     var deductionDetail = new DeductionDetail { Id = new Guid(), DepartmentId = department.Id, PhysicianUniverse = physicianUniverse, PhysicianUniverseCovered = 100 };
-                    foreach (var segment in request.Segments)
-                    {
-                        deductionDetail.Segments.Add(segment);
-                    }
                     plan.Deduction.DeductionDetails.Add(deductionDetail);
                 }
                 await _context.Plans.AddAsync(plan);
