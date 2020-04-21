@@ -62,7 +62,10 @@ namespace Application.Plans
                 foreach (var department in request.Departments)
                 {
                     var physicianUniverse = (from dc in _context.DepartmentCities.ToArray() join c in request.Cities on dc.CityId equals c.Id where dc.DepartmentId == department.Id select dc).Sum(dc => dc.PhysicianCount);
-                    var deductionDetail = new DeductionDetail { Id = new Guid(), DepartmentId = department.Id, PhysicianUniverse = physicianUniverse, PhysicianUniverseCovered = 100 };
+                    var deductionDetail = new DeductionDetail { Id = new Guid(), DepartmentId = department.Id, PhysicianUniverse = physicianUniverse, PhysicianUniverseCovered = 100, Segments = new List<Segment>() };
+                    deductionDetail.Segments.Add(new Segment { Id = new Guid(), Rate = 0, TargetCount = 0, TargetFrequency = 0, Visit = 0 });
+                    deductionDetail.Segments.Add(new Segment { Id = new Guid(), Rate = 0, TargetCount = 0, TargetFrequency = 0, Visit = 0 });
+                    deductionDetail.Segments.Add(new Segment { Id = new Guid(), Rate = 0, TargetCount = 0, TargetFrequency = 0, Visit = 0 });
                     plan.Deduction.DeductionDetails.Add(deductionDetail);
                 }
                 await _context.Plans.AddAsync(plan);
