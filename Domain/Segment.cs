@@ -14,7 +14,7 @@ namespace Domain
         [Column(TypeName = "decimal(12,2)")]
         public decimal? TargetCount { get; set; }
         [Column(TypeName = "decimal(12,2)")]
-        public decimal TargetFrequency { get; set; }
+        public decimal? TargetFrequency { get; set; }
         [Column(TypeName = "decimal(12,2)")]
         public decimal? Visit { get; set; }
         public Guid DeductionDetailId { get; set; }

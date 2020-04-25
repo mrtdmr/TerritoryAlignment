@@ -48,14 +48,16 @@ namespace Persistence
             {
                 var departments = new List<Department>
                 {
-                    new Department{Name="Acil Hekimliği", Active=true},
-                    new Department{Name="Ağız Diş ve Çene Radyolojisi", Active=true},
-                    new Department{Name="Anestezi ve Reanimasyon", Active=true},
-                    new Department{Name="Beyin Cerrahi", Active=true},
-                    new Department{Name="Dahiliye", Active=true},
-                    new Department{Name="Genel Cerrahi", Active=true},
                     new Department{Name="Kadın Doğum", Active=true},
-                    new Department{Name="Kardiyoloji", Active=true}
+                    new Department{Name="Fizik Tedavi ve Rehabilitasyon", Active=true},
+                    new Department{Name="Diş ve Çene Cerrahi", Active=true},
+                    new Department{Name="Ortopedi", Active=true},
+                    new Department{Name="Acil Hekimliği", Active=true},
+                    new Department{Name="Genel Cerrahi", Active=true},
+                    new Department{Name="Dahiliye", Active=true},
+                    new Department{Name="Aile Hekimliği", Active=true},
+                    new Department{Name="Pediyatri", Active=true},
+                    new Department{Name="Beyin Cerrahi", Active=true}
                 };
                 await context.Departments.AddRangeAsync(departments);
                 await context.SaveChangesAsync();
